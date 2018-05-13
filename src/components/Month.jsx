@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import Week from "./Week";
-import * as calendar from './../calendar';
 
 export default class Month extends Component {
     render() {
@@ -34,11 +33,31 @@ export default class Month extends Component {
                             </tr>
                         </thead>
                         <tbody>
-                            <Week days={calendar.getDaysOfWeek(this.props.currentMonth, 0)} />
-                            <Week days={calendar.getDaysOfWeek(this.props.currentMonth, 1)} />
-                            <Week days={calendar.getDaysOfWeek(this.props.currentMonth, 2)} />
-                            <Week days={calendar.getDaysOfWeek(this.props.currentMonth, 3)} />
-                            <Week days={calendar.getDaysOfWeek(this.props.currentMonth, 4)} />
+                            <Week
+                                events={this.props.events}
+                                currentMonth={this.props.currentMonth}
+                                week={0}
+                            />
+                            <Week
+                                events={this.props.events}
+                                currentMonth={this.props.currentMonth}
+                                week={1}
+                            />
+                            <Week
+                                events={this.props.events}
+                                currentMonth={this.props.currentMonth}
+                                week={2}
+                            />
+                            <Week
+                                events={this.props.events}
+                                currentMonth={this.props.currentMonth}
+                                week={3}
+                            />
+                            <Week
+                                events={this.props.events}
+                                currentMonth={this.props.currentMonth}
+                                week={4}
+                            />
                         </tbody>
                     </table>
                 </div>

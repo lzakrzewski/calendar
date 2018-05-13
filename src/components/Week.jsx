@@ -6,13 +6,14 @@ import {
     THURSDAY,
     FRIDAY,
     SATURDAY,
-    SUNDAY
+    SUNDAY,
+    getDaysOfWeek
 } from './../calendar';
 import _ from 'lodash';
 
 export default class Week extends Component {
-    getDay = (dayName) => {
-        const day = _.find(this.props.days, { dayName });
+    getDay = (days, dayName) => {
+        const day = _.find(days, { dayName });
 
         if (!day) {
             return null;
@@ -22,29 +23,31 @@ export default class Week extends Component {
     };
 
     render() {
+        const days = getDaysOfWeek(this.props.currentMonth, this.props.week);
+
         return (
 
             <tr>
                 <td>
-                    {this.getDay(MONDAY)}
+                    {this.getDay(days, MONDAY)}
                 </td>
                 <td>
-                    {this.getDay(TUESDAY)}
+                    {this.getDay(days, TUESDAY)}
                 </td>
                 <td>
-                    {this.getDay(WEDNESDAY)}
+                    {this.getDay(days, WEDNESDAY)}
                 </td>
                 <td>
-                    {this.getDay(THURSDAY)}
+                    {this.getDay(days, THURSDAY)}
                 </td>
                 <td>
-                    {this.getDay(FRIDAY)}
+                    {this.getDay(days, FRIDAY)}
                 </td>
                 <td>
-                    {this.getDay(SATURDAY)}
+                    {this.getDay(days, SATURDAY)}
                 </td>
                 <td className="text-danger">
-                    {this.getDay(SUNDAY)}
+                    {this.getDay(days, SUNDAY)}
                 </td>
             </tr>
         );

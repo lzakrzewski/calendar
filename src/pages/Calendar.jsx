@@ -1,12 +1,18 @@
 import React, {Component} from 'react';
 import Month from "../components/Month";
 import { getTodaysMonth } from '../calendar';
+import { connect } from 'react-redux';
+import { fetchEvents } from '../actions';
 
 class Calendar extends Component {
     constructor(props) {
         super(props);
 
         this.state = { currentMonth: getTodaysMonth() };
+    }
+
+    componentDidMount = () => {
+        this.props.fetchEvents();
     }
 
     handlePrev = () => {
@@ -68,10 +74,14 @@ class Calendar extends Component {
                         </nav>
                     </div>
                 </div>
-                <Month currentMonth={ this.state.currentMonth } />
+                <Month currentMonth={ this.state.currentMonth } events={ this.props.events } />
             </div>
         );
     }
 }
 
-export default Calendar;
+function mapStateToProps(state) {
+    return { events: state.events };
+}
+
+export default connect(mapStateToProps, { fetchEvents })(Calendar);
