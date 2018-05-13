@@ -1,46 +1,19 @@
 import React, {Component} from 'react';
-import Week from './../components/Week';
-import _ from 'lodash';
+import Month from "../components/Month";
 
 class Calendar extends Component {
-    render() {
-        const daysInMonth = _.range(1, 30);
+    constructor(props) {
+        super(props);
 
+        this.year = 2017;
+        this.month = 2;
+    }
+
+    render() {
         return (
-            <table className="table-bordered">
-                <thead>
-                    <tr>
-                        <th>
-                            Monday
-                        </th>
-                        <th>
-                            Tuesday
-                        </th>
-                        <th>
-                            Wednesday
-                        </th>
-                        <th>
-                            Thursday
-                        </th>
-                        <th>
-                            Friday
-                        </th>
-                        <th>
-                            Saturday
-                        </th>
-                        <th>
-                            Sunday
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <Week daysInWeek={_.slice(daysInMonth, 0, 7)} />
-                    <Week daysInWeek={_.slice(daysInMonth, 7, 14)} />
-                    <Week daysInWeek={_.slice(daysInMonth, 14, 21)} />
-                    <Week daysInWeek={_.slice(daysInMonth, 21, 28)} />
-                    <Week daysInWeek={_.slice(daysInMonth, 28, 35)} />
-                </tbody>
-            </table>
+            <div>
+                <Month year={this.year} month={this.month} />
+            </div>
         );
     }
 }
