@@ -7,21 +7,25 @@ class Calendar extends Component {
         super(props);
 
         this.state = { currentMonth: getTodaysMonth() };
+
+        this.handlePrev = this.handlePrev.bind(this);
+        this.handleToday = this.handleToday.bind(this);
+        this.handleNext = this.handleNext.bind(this);
     }
 
-    handlePrev = () => {
+    handlePrev() {
         this.setState({ currentMonth: this.state.currentMonth.subtract(1, 'month') })
     };
 
-    handleToday = () => {
+    handleToday() {
         this.setState({ currentMonth: getTodaysMonth() })
     };
 
-    handleNext = () => {
+    handleNext() {
         this.setState({ currentMonth: this.state.currentMonth.add(1, 'month') })
     };
 
-    getCurrentDate = () => {
+    getCurrentDate() {
         return this.state.currentMonth.format('MMMM YYYY');
     };
 
@@ -34,7 +38,7 @@ class Calendar extends Component {
                             <ul style={{marginBottom: 0}} className="pagination pagination-lg">
                                 <li className="page-item">
                                     <a
-                                        className="page-link"
+                                        className="page-link prev-month"
                                         href="#"
                                         onClick={this.handlePrev}
                                     >
@@ -52,7 +56,7 @@ class Calendar extends Component {
                                 </li>
                                 <li className="page-item">
                                     <a
-                                        className="page-link"
+                                        className="page-link next-month"
                                         href="#"
                                         onClick={this.handleNext}
                                     >
