@@ -18,3 +18,11 @@ test('Calendar can go to next month', () => {
 
     expect(calendar.text()).toContain(moment().add(1, 'month').format('MMMM YYYY'));
 });
+
+test('Calendar can go to previous month', () => {
+    const calendar = mount(<Calendar />);
+
+    calendar.find('.prev-month').simulate('click');
+
+    expect(calendar.text()).toContain(moment().subtract(1, 'month').format('MMMM YYYY'));
+});

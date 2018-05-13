@@ -11,7 +11,7 @@ import {
 import _ from 'lodash';
 
 export default class Week extends Component {
-    getDay(dayName) {
+    getDay = (dayName) => {
         const day = _.find(this.props.days, { dayName });
 
         if (!day) {

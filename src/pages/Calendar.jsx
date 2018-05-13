@@ -7,25 +7,21 @@ class Calendar extends Component {
         super(props);
 
         this.state = { currentMonth: getTodaysMonth() };
-
-        this.handlePrev = this.handlePrev.bind(this);
-        this.handleToday = this.handleToday.bind(this);
-        this.handleNext = this.handleNext.bind(this);
     }
 
-    handlePrev() {
+    handlePrev = () => {
         this.setState({ currentMonth: this.state.currentMonth.subtract(1, 'month') })
     };
 
-    handleToday() {
+    handleToday = () => {
         this.setState({ currentMonth: getTodaysMonth() })
     };
 
-    handleNext() {
+    handleNext = () => {
         this.setState({ currentMonth: this.state.currentMonth.add(1, 'month') })
     };
 
-    getCurrentDate() {
+    getCurrentDate = () => {
         return this.state.currentMonth.format('MMMM YYYY');
     };
 
