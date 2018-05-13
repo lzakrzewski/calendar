@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import * as calendar from './../calendar';
 import {
     MONDAY,
     TUESDAY,
@@ -12,42 +11,40 @@ import {
 import _ from 'lodash';
 
 export default class Week extends Component {
-    getDay = (dayName, days) => {
-        const day = _.find(days, { dayName });
+    getDay = (dayName) => {
+        const day = _.find(this.props.days, { dayName });
 
         if (!day) {
             return null;
         }
 
         return day.day;
-    }
+    };
 
     render() {
-        const days = calendar.getDaysOfWeek(this.props.year, this.props.month, this.props.week);
-
         return (
 
             <tr>
                 <td>
-                    {this.getDay(MONDAY, days)}
+                    {this.getDay(MONDAY)}
                 </td>
                 <td>
-                    {this.getDay(TUESDAY, days)}
+                    {this.getDay(TUESDAY)}
                 </td>
                 <td>
-                    {this.getDay(WEDNESDAY, days)}
+                    {this.getDay(WEDNESDAY)}
                 </td>
                 <td>
-                    {this.getDay(THURSDAY, days)}
+                    {this.getDay(THURSDAY)}
                 </td>
                 <td>
-                    {this.getDay(FRIDAY, days)}
+                    {this.getDay(FRIDAY)}
                 </td>
                 <td>
-                    {this.getDay(SATURDAY, days)}
+                    {this.getDay(SATURDAY)}
                 </td>
-                <td>
-                    {this.getDay(SUNDAY, days)}
+                <td className="text-danger">
+                    {this.getDay(SUNDAY)}
                 </td>
             </tr>
         );
