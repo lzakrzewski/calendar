@@ -34,11 +34,11 @@ export default class Month extends Component {
                             </tr>
                         </thead>
                         <tbody>
-                            <Week days={calendar.getDaysOfWeek(this.props.year, this.props.month, 1)} />
-                            <Week days={calendar.getDaysOfWeek(this.props.year, this.props.month, 2)} />
-                            <Week days={calendar.getDaysOfWeek(this.props.year, this.props.month, 3)} />
-                            <Week days={calendar.getDaysOfWeek(this.props.year, this.props.month, 4)} />
-                            <Week days={calendar.getDaysOfWeek(this.props.year, this.props.month, 5)} />
+                            <Week days={calendar.getDaysOfWeek(this.props.currentMonth, 0)} />
+                            <Week days={calendar.getDaysOfWeek(this.props.currentMonth, 1)} />
+                            <Week days={calendar.getDaysOfWeek(this.props.currentMonth, 2)} />
+                            <Week days={calendar.getDaysOfWeek(this.props.currentMonth, 3)} />
+                            <Week days={calendar.getDaysOfWeek(this.props.currentMonth, 4)} />
                         </tbody>
                     </table>
                 </div>
