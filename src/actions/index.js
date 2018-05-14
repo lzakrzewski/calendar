@@ -7,7 +7,7 @@ export function fetchEvents() {
             data: [
                 {
                     id: 'event-id',
-                    start: '2018-05-13T21:49:59.750Z',
+                    date: '2018-05-13T21:49:59.750Z',
                     event: "Learn reactJS"
                 }
             ]

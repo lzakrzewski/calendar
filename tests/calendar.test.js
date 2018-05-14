@@ -5,9 +5,7 @@ describe('calendar', () => {
     it('can return today\'s month moment representation', () => {
         const today = calendar.getTodaysMonth();
 
-        expect(today).toEqual(
-            moment().startOf('month')
-        );
+        expect(today).toEqual(moment().startOf('month'));
     });
 
     it('can get days of first week from January 2017', () => {
@@ -17,6 +15,7 @@ describe('calendar', () => {
             [
                 {
                     "day": "1",
+                    "date": "2017-01-01",
                     "dayName": "Sunday",
                     "week": 0
                 }
@@ -32,16 +31,19 @@ describe('calendar', () => {
                 {
                     "day": "26",
                     "dayName": "Monday",
+                    "date": "2018-02-26",
                     "week": 4
                 },
                 {
                     "day": "27",
                     "dayName": "Tuesday",
+                    "date": "2018-02-27",
                     "week": 4
                 },
                 {
                     "day": "28",
                     "dayName": "Wednesday",
+                    "date": "2018-02-28",
                     "week": 4
                 },
             ]
@@ -56,6 +58,7 @@ describe('calendar', () => {
                 {
                     "day": "1",
                     "dayName": "Sunday",
+                    "date": "2019-12-01",
                     "week": 0
                 }
             ]

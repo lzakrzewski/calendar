@@ -9,16 +9,18 @@ export const FRIDAY = 'Friday';
 export const SATURDAY = 'Saturday';
 export const SUNDAY = 'Sunday';
 
-export const getDaysOfWeek = (month, week) => {
-    return _.filter(getDaysOfMonth(month), { 'week': week });
+export const ALL_WEEK_DAYS = [MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY];
+
+export const getDaysOfWeek = (date, week) => {
+    return _.filter(getDaysOfMonth(date), { week });
 };
 
 export const getTodaysMonth = () => {
     return moment().startOf('month');
-}
+};
 
-const getDaysOfMonth = (currentMonth) => {
-    currentMonth = moment(currentMonth).startOf('month');
+const getDaysOfMonth = (date) => {
+    const currentMonth = moment(date).startOf('month');
 
     return _.times(
         currentMonth.daysInMonth(),
@@ -28,6 +30,7 @@ const getDaysOfMonth = (currentMonth) => {
             return {
                 'dayName': day.format('dddd'),
                 'day': day.format('D'),
+                'date': day.format('YYYY-MM-DD'),
                 'week': weekOfMonth(day)
             };
         }
@@ -36,4 +39,4 @@ const getDaysOfMonth = (currentMonth) => {
 
 const weekOfMonth = (date) => {
     return date.isoWeek() - date.startOf('month').isoWeek();
-}
+};

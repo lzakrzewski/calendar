@@ -3,11 +3,10 @@ import { mount } from 'enzyme';
 import Calendar from "../../src/pages/Calendar";
 import { Provider } from "react-redux";
 import moment from 'moment-immutable';
-
 import configureMockStore from "redux-mock-store";
+
 const mockStore = configureMockStore();
 const store = mockStore({ events: {}});
-
 
 test('Calendar renders table with days of current month', () => {
     const calendar = mount(<Provider store={store}><Calendar /></Provider>);

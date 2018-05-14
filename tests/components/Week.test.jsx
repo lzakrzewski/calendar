@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import Week from "../../src/components/Week";
 import moment from 'moment-immutable';
 
@@ -7,7 +7,7 @@ test('can render 7 days week', () => {
     const events = {};
     const currentMonth = moment('2018-07-11');
 
-    const week = shallow(<Week currentMonth={currentMonth} events={events} week={1} />);
+    const week = mount(<table><tbody><Week currentMonth={currentMonth} events={events} week={1} /></tbody></table>);
 
     expect(week.text()).toContain('2');
     expect(week.text()).toContain('3');
@@ -22,7 +22,7 @@ test('can render 1 days week', () => {
     const events = {};
     const currentMonth = moment('2018-07-11');
 
-    const week = shallow(<Week currentMonth={currentMonth} events={events} week={0} />);
+    const week = mount(<table><tbody><Week currentMonth={currentMonth} events={events} week={0} /></tbody></table>);
 
     expect(week.text()).toContain('1');
 });
