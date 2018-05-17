@@ -9,6 +9,16 @@ import Day from "./Day";
 import moment from 'moment-immutable';
 
 export default class Week extends Component {
+    getTdClassName = (dayName, day) => {
+        if (!day) {
+            return '';
+        }
+
+        return (dayName === SUNDAY) ? 'text-danger' : ''
+        + ' '
+        + day && moment(day).startOf('day').isSame(moment().startOf('day')) ? 'today' : '';
+    }
+
     render() {
         const days = getDaysOfWeek(this.props.currentMonth, this.props.week);
 
@@ -20,7 +30,10 @@ export default class Week extends Component {
                         const day = _.find(days, {dayName});
 
                         return (
-                            <td key={dayName} className={(dayName === SUNDAY) ? 'text-danger' : ''}>
+                            <td
+                                key={dayName}
+                                className={this.getTdClassName(dayName, day)}
+                            >
                                 <Day
                                     day={day ? moment(day) : null }
                                     events={this.props.events}

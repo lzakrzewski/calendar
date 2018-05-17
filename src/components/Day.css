@@ -1,0 +1,18 @@
+.Day ul.events {
+    margin-bottom: 0;
+}
+
+.Day ul.events li {
+    display: inline-block;
+    padding: .25rem;
+    margin: 0;
+    width: 100%;
+}
+
+.Day {
+    min-height: 6rem;
+}
+
+.Day .day {
+    padding: .25rem;
+}

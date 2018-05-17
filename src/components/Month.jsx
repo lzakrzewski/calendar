@@ -6,29 +6,29 @@ export default class Month extends Component {
     render() {
         return (
             <div className="row">
-                <div className="col-md-12">
+                <div className="col-md-12 Month">
                     <table className="table table-bordered">
                         <thead className="thead-dark">
                             <tr>
-                                <th style={{ width: "14.29%" }}>
+                                <th>
                                     Monday
                                 </th>
-                                <th style={{ width: "14.29%" }}>
+                                <th>
                                     Tuesday
                                 </th>
-                                <th style={{ width: "14.29%" }}>
+                                <th>
                                     Wednesday
                                 </th>
-                                <th style={{ width: "14.29%" }}>
+                                <th>
                                     Thursday
                                 </th>
-                                <th style={{ width: "14.29%" }}>
+                                <th>
                                     Friday
                                 </th>
-                                <th style={{ width: "14.29%" }}>
+                                <th>
                                     Saturday
                                 </th>
-                                <th style={{ width: "14.29%" }}>
+                                <th>
                                     Sunday
                                 </th>
                             </tr>
