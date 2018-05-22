@@ -6,15 +6,15 @@ describe('events', () => {
         const events = {
             'event-in-1': {
                 id: 'event-in-1',
-                date: '2017-01-01'
+                start: '2017-01-01'
             },
             'event-in-2': {
                 id: 'event-in-2',
-                date: '2017-01-01 00:54:33'
+                start: '2017-01-01 00:54:33'
             },
             'event-out': {
                 id: 'event-out',
-                date: '2017-03-01'
+                start: '2017-03-01'
             },
         };
 
@@ -22,11 +22,49 @@ describe('events', () => {
             [
                 {
                     id: 'event-in-1',
-                    date: '2017-01-01'
+                    start: '2017-01-01'
                 },
                 {
                     id: 'event-in-2',
-                    date: '2017-01-01 00:54:33'
+                    start: '2017-01-01 00:54:33'
+                },
+            ]
+        );
+    });
+
+    it('returns sorted array of events for given date', () => {
+        const events = {
+            'event-1': {
+                id: 'event-1',
+                start: '2017-01-01 00:00:01'
+            },
+            'event-2': {
+                id: 'event-2',
+                start: '2017-01-01 23:59:57'
+            },
+            'event-3': {
+                id: 'event-3',
+                start: '2017-01-01'
+            },
+            'event-out': {
+                id: 'event-out',
+                start: '2017-01-02 00:00:01'
+            },
+        };
+
+        expect(dateEvents(moment('2017-01-01 04:32:01'), events)).toEqual(
+            [
+                {
+                    id: 'event-3',
+                    start: '2017-01-01'
+                },
+                {
+                    id: 'event-1',
+                    start: '2017-01-01 00:00:01'
+                },
+                {
+                    id: 'event-2',
+                    start: '2017-01-01 23:59:57'
                 },
             ]
         );
@@ -36,15 +74,15 @@ describe('events', () => {
         const events = {
             'event-1': {
                 id: 'event-1',
-                date: '2017-01-01'
+                start: '2017-01-01'
             },
             'event-2': {
                 id: 'event-3',
-                date: '2017-01-01 00:54:33'
+                start: '2017-01-01 00:54:33'
             },
             'event-3': {
                 id: 'event-3',
-                date: '2017-01-01'
+                start: '2017-01-01'
             },
         };
 

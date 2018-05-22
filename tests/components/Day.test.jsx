@@ -16,7 +16,7 @@ test('can render day without any events', () => {
 });
 
 test('can render day with events', () => {
-    const day = shallow(<Day day={moment('2017-01-01')} events={[{ id: 'event-1', date: '2017-01-01', event: 'Learn ReactJS'}]} />);
+    const day = shallow(<Day day={moment('2017-01-01')} events={[{ id: 'event-1', start: '2017-01-01', event: 'Learn ReactJS'}]} />);
 
     expect(day.text()).toContain('Learn ReactJS');
 });
