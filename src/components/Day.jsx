@@ -4,7 +4,7 @@ import _ from 'lodash';
 import './Day.css';
 
 export default class Day extends Component {
-    getEventColor = (index) => {
+    getEventColor = (event, events) => {
         const colors = [
             'primary',
             'secondary',
@@ -15,6 +15,8 @@ export default class Day extends Component {
             'light',
             'dark',
         ];
+
+        const index = _.indexOf(_.values(events), event);
 
         return colors[index % 7];
     };
@@ -36,10 +38,10 @@ export default class Day extends Component {
                     <ul className="list-inline events all-day-events ">
                         { _.map(
                             allDayEvents,
-                            (event, index) => {
+                            (event) => {
                                 return (
                                     <li
-                                        className={`badge badge-${this.getEventColor(index)}`}
+                                        className={`badge badge-${this.getEventColor(event, this.props.events)}`}
                                         key={event.id}
                                     >
                                         { event.event }
@@ -53,10 +55,10 @@ export default class Day extends Component {
                     <ul className="list-inline events day-events">
                         { _.map(
                             dayEvents,
-                            (event, index) => {
+                            (event) => {
                                 return (
                                     <li
-                                        className={`badge badge-${this.getEventColor(index)}`}
+                                        className={`badge badge-${this.getEventColor(event, this.props.events)}`}
                                         key={event.id}
                                     >
                                         { event.event }
