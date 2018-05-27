@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { dateEvents } from '../events';
+import * as events from '../events';
 import _ from 'lodash';
 import './Day.css';
 
@@ -24,17 +24,35 @@ export default class Day extends Component {
             return <div className="Day" />
         }
 
-        const events = dateEvents(this.props.day, this.props.events);
+        const allDayEvents = events.allDayEvents(this.props.day, this.props.events);
+        const dayEvents = events.dayEvents(this.props.day, this.props.events);
 
         return (
             <div className="Day">
                 <div className="day">
                     {this.props.day.format('D')}
                 </div>
-                {events.length > 0 &&
-                    <ul className="list-inline events">
+                { allDayEvents.length > 0 &&
+                    <ul className="list-inline events all-day-events ">
                         { _.map(
-                            dateEvents(this.props.day, this.props.events),
+                            allDayEvents,
+                            (event, index) => {
+                                return (
+                                    <li
+                                        className={`badge badge-${this.getEventColor(index)}`}
+                                        key={event.id}
+                                    >
+                                        { event.event }
+                                    </li>
+                                )
+                            })
+                        }
+                    </ul>
+                }
+                { dayEvents.length > 0 &&
+                    <ul className="list-inline events day-events">
+                        { _.map(
+                            dayEvents,
                             (event, index) => {
                                 return (
                                     <li

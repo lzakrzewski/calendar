@@ -11,47 +11,76 @@ export function fetchEvents() {
         {
             id: 'event-id-1',
             start: today.hour(10).toISOString(),
-            event: "Quick event 1"
+            event: "Quick event 1",
+            allDay: false,
         },
         {
             id: 'event-id-2',
             start: threeDaysAgo.hour(7).toISOString(),
-            event: "Quick event 2"
+            event: "Quick event 2",
+            allDay: false,
         },
         {
             id: 'event-id-3',
             start: today.hour(13).toISOString(),
-            event: "One hour event"
+            end: today.hour(14).toISOString(),
+            event: "One hour event",
+            allDay: false,
         },
         {
             id: 'event-id-4',
             start: today.hour(11).toISOString(),
             end: today.hour(12).minutes(30).toISOString(),
-            event: "One hour and half"
+            event: "One hour and half",
+            allDay: false,
         },
         {
             id: 'event-id-5',
             start: twoDaysAfter.hour(15).toISOString(),
             end: twoDaysAfter.hour(18).toISOString(),
-            event: "Three hours event"
+            event: "Three hours event",
+            allDay: false,
         },
         {
             id: 'event-id-6',
             start: twoDaysAfter.hour(6).toISOString(),
             end: twoDaysAfter.hour(18).toISOString(),
-            event: "Whole day event"
+            event: "Whole day event",
+            allDay: true,
         },
         {
             id: 'event-id-7',
             start: tomorrow.hour(6).toISOString(),
             end: tomorrow.hour(12).toISOString(),
-            event: "6 hours event"
+            event: "6 hours event",
+            allDay: false,
         },
         {
             id: 'event-id-8',
             start: threeDaysAgo.hour(6).toISOString(),
             end: twoDaysAfter.hour(18).toISOString(),
-            event: "Multiple days event"
+            event: "Multiple days event",
+            allDay: true,
+        },
+        {
+            id: 'event-id-9',
+            start: today.startOf('month').add(2, 'day').hour(6).toISOString(),
+            end: today.startOf('month').add(12, 'day').hour(16).toISOString(),
+            event: "More than one week event",
+            allDay: true,
+        },
+        {
+            id: 'event-id-10',
+            start: today.startOf('month').add(10, 'day').hour(6).toISOString(),
+            end: today.startOf('month').add(12, 'day').hour(16).toISOString(),
+            event: "3 days event",
+            allDay: true,
+        },
+        {
+            id: 'event-id-11',
+            start: today.startOf('month').add(12, 'day').hour(1).toISOString(),
+            event: "Day event",
+            allDay: true,
         }
     ];
 

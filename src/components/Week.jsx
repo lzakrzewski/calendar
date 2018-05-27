@@ -14,10 +14,18 @@ export default class Week extends Component {
             return '';
         }
 
-        return (dayName === SUNDAY) ? 'text-danger' : ''
-        + ' '
-        + day && moment(day).startOf('day').isSame(moment().startOf('day')) ? 'today' : '';
-    }
+        let tdClasses = [];
+
+        if (dayName === SUNDAY) {
+            tdClasses.push('text-danger')
+        }
+
+        if (moment(day).startOf('day').isSame(moment().startOf('day'))) {
+            tdClasses.push('today')
+        }
+
+        return tdClasses.join(' ');
+    };
 
     render() {
         const days = getDaysOfWeek(this.props.currentMonth, this.props.week);
