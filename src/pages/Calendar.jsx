@@ -12,19 +12,23 @@ class Calendar extends Component {
     }
 
     componentDidMount = () => {
-        this.props.fetchEvents();
+        this.fetchEvents();
     }
 
     handlePrev = () => {
-        this.setState({ currentMonth: this.state.currentMonth.subtract(1, 'month') })
+        this.setState({ currentMonth: this.state.currentMonth.subtract(1, 'month') }, this.fetchEvents);
     };
 
     handleToday = () => {
-        this.setState({ currentMonth: getTodaysMonth() })
+        this.setState({ currentMonth: getTodaysMonth() }, this.fetchEvents);
     };
 
     handleNext = () => {
-        this.setState({ currentMonth: this.state.currentMonth.add(1, 'month') })
+        this.setState({ currentMonth: this.state.currentMonth.add(1, 'month') }, this.fetchEvents);
+    };
+
+    fetchEvents = () => {
+        this.props.fetchEvents(this.state.currentMonth);
     };
 
     getCurrentDate = () => {

@@ -6,8 +6,27 @@ const tomorrow = moment().add(1, 'days');
 const twoDaysAfter = moment().add(2, 'days');
 const threeDaysAgo = moment().subtract(3, 'days');
 
-export function fetchEvents() {
-    const data = [
+export function fetchEvents(currentMonth) {
+    const data = getMockedEvents(currentMonth);
+
+    return {
+        type: FETCH_EVENTS,
+        payload: { data },
+    };
+}
+
+function getMockedEvents(currentMonth) {
+    if (!currentMonth) {
+        return [];
+    }
+
+    const month = moment(currentMonth).startOf('month');
+
+    if (!moment().startOf('month').isSame(month)) {
+        return [];
+    }
+
+    return [
         {
             id: 'event-id-1',
             start: today.hour(10).minutes(10).toISOString(),
@@ -86,9 +105,4 @@ export function fetchEvents() {
             allDay: true,
         }
     ];
-
-    return {
-        type: FETCH_EVENTS,
-        payload: { data }
-    }
 }

@@ -1,4 +1,5 @@
 import moment from 'moment-immutable';
+import moment3 from 'moment';
 import _ from 'lodash';
 
 export const MONDAY = 'Monday';
