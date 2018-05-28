@@ -19,6 +19,18 @@ export const getTodaysMonth = () => {
     return moment().startOf('month');
 };
 
+export const getDaysDiffInWeek = (from, to) => {
+    const fromDay = moment(from).startOf('day');
+    const toDay = moment(to).startOf('day');
+    const endOfCurrentWeek = fromDay.startOf('isoweek').day(7);
+
+    if (toDay.isAfter(endOfCurrentWeek)) {
+        return endOfCurrentWeek.diff(fromDay, 'days') + 1;
+    }
+
+    return toDay.diff(fromDay, 'days') + 1;
+};
+
 const getDaysOfMonth = (date) => {
     const currentMonth = moment(date).startOf('month');
 

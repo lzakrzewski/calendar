@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import * as events from '../events';
+import { getDaysDiffInWeek } from '../calendar';
 import _ from 'lodash';
+import moment from 'moment-immutable';
 import './Day.css';
 
 export default class Day extends Component {
@@ -41,10 +43,10 @@ export default class Day extends Component {
                             (event) => {
                                 return (
                                     <li
-                                        className={`badge badge-${this.getEventColor(event, this.props.events)}`}
+                                        className={`badge duration-${getDaysDiffInWeek(this.props.day, event.end)} badge-${this.getEventColor(event, this.props.events)}`}
                                         key={event.id}
                                     >
-                                        { event.event }
+                                        <span>{ event.event }</span>
                                     </li>
                                 )
                             })
@@ -52,16 +54,18 @@ export default class Day extends Component {
                     </ul>
                 }
                 { dayEvents.length > 0 &&
-                    <ul className="list-inline events day-events">
+                    <ul className="list-unstyled events day-events">
                         { _.map(
                             dayEvents,
                             (event) => {
                                 return (
                                     <li
-                                        className={`badge badge-${this.getEventColor(event, this.props.events)}`}
+                                        className={`${this.getEventColor(event, this.props.events)}`}
                                         key={event.id}
                                     >
-                                        { event.event }
+                                        <span className="dot" />
+                                        <span className="start">{moment(event.start).format('hh:mm')}</span>
+                                        <span>{ event.event }</span>
                                     </li>
                                 )
                             })

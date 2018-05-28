@@ -1,13 +1,15 @@
 import * as calendar from './../src/calendar';
 import moment from 'moment-immutable';
 
-describe('calendar', () => {
+describe('getTodaysMonth', () => {
     it('can return today\'s month moment representation', () => {
         const today = calendar.getTodaysMonth();
 
         expect(today).toEqual(moment().startOf('month'));
     });
+});
 
+describe('getDaysOfWeek', () => {
     it('can get days of first week from January 2017', () => {
         const days = calendar.getDaysOfWeek(moment('2017-01-05'), 0);
 
@@ -80,5 +82,25 @@ describe('calendar', () => {
         expect(days).toEqual(
             []
         );
+    });
+});
+
+describe('getDaysDiffInWeek', () => {
+    it('can return diff of days between two dates', () => {
+        const diff = calendar.getDaysDiffInWeek(moment('2018-05-03'), moment('2018-05-06'));
+
+        expect(diff).toEqual(4);
+    });
+
+    it('can return diff of days between two dates if end date is in next week', () => {
+        const diff = calendar.getDaysDiffInWeek(moment('2018-05-24'), moment('2018-05-29'));
+
+        expect(diff).toEqual(4);
+    });
+
+    it('can return diff of days between two dates if diff is 1', () => {
+        const diff = calendar.getDaysDiffInWeek(moment('2018-05-03'), moment('2018-05-03'));
+
+        expect(diff).toEqual(1);
     });
 });
