@@ -7,14 +7,10 @@ import "./AddEvent.css";
 
 const customStyles = {
     content : {
-        top                   : '50%',
-        left                  : '50%',
-        right                 : 'auto',
-        bottom                : 'auto',
-        marginRight           : '-50%',
-        transform             : 'translate(-50%, -50%)',
+        top: '10%',
         border: 0,
         padding: 0,
+        backgroundColor: 'transparent'
     }
 };
 
@@ -105,8 +101,7 @@ export default class AddEvent extends Component {
                                         <input type="text" className="form-control" id="eventName" placeholder="Event name" />
                                     </div>
 
-                                    <div className="form-group col-md-3">
-                                        <label />
+                                    <div className="form-group col-md-3 text-center all-day">
                                         <div className="form-check mb-2">
                                             <div className="custom-control custom-checkbox my-1 mr-sm-2">
                                                 <input type="checkbox" className="custom-control-input" id="allDay" />

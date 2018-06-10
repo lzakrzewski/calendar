@@ -4,6 +4,14 @@
     width: 100%;
 }
 
+.AddEvent.modal-content {
+    height: 60%;
+}
+
 .AddEvent ul.react-datepicker__time-list {
     padding: 0 !important;
+}
+
+.AddEvent .all-day {
+    padding-top: 2rem;
 }
