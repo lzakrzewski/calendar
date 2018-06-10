@@ -3,6 +3,7 @@ import Month from "../components/Month";
 import { getTodaysMonth } from '../calendar';
 import { connect } from 'react-redux';
 import { fetchEvents } from '../actions';
+import AddEvent from "../components/AddEvent";
 
 class Calendar extends Component {
     constructor(props) {
@@ -25,6 +26,10 @@ class Calendar extends Component {
 
     handleNext = () => {
         this.setState({ currentMonth: this.state.currentMonth.add(1, 'month') }, this.fetchEvents);
+    };
+
+    addEvent = () => {
+        this.child.openModal();
     };
 
     fetchEvents = () => {
@@ -70,6 +75,14 @@ class Calendar extends Component {
                                     </a>
                                 </li>
                             </ul>
+                            <button
+                                className="page-item btn btn-primary btn-lg"
+                                href="#"
+                                onClick={this.addEvent}
+                            >
+                                + Add event
+                            </button>
+
                             <span className="navbar-text">
                                 <h2>
                                     {this.getCurrentDate()}
@@ -79,6 +92,7 @@ class Calendar extends Component {
                     </div>
                 </div>
                 <Month currentMonth={ this.state.currentMonth } events={ this.props.events } />
+                <AddEvent onRef={ref => (this.child = ref)} />
             </div>
         );
     }

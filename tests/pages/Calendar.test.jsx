@@ -25,7 +25,7 @@ test('Calendar can go to next month', () => {
 });
 
 test('Calendar can go to previous month', () => {
-    const calendar = mount(<Provider store={store}><Calendar /></Provider>);
+            const calendar = mount(<Provider store={store}><Calendar /></Provider>);
 
     calendar.find('.prev-month').simulate('click');
 

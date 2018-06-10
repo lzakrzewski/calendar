@@ -10,6 +10,10 @@
     width: 100%;
 }
 
+.ReactModal__Overlay {
+    z-index: 100;
+}
+
 .Day ul.events li span {
     display: inline-block;
 }
