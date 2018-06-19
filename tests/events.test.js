@@ -1,5 +1,5 @@
 import { dayEvents, allDayEvents } from './../src/events';
-import moment from 'moment-immutable';
+import moment from 'moment';
 
 describe('dayEvents', () => {
     it('can extract current day events from monthly events', () => {

@@ -1,5 +1,5 @@
 import * as calendar from './../src/calendar';
-import moment from 'moment-immutable';
+import moment from 'moment';
 
 describe('getTodaysMonth', () => {
     it('can return today\'s month moment representation', () => {

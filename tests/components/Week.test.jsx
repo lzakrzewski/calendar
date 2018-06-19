@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import Week from "../../src/components/Week";
-import moment from 'moment-immutable';
+import moment from 'moment';
 
 test('can render 7 days week', () => {
     const events = {};

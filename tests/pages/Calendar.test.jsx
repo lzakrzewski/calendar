@@ -2,7 +2,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 import Calendar from "../../src/pages/Calendar";
 import { Provider } from "react-redux";
-import moment from 'moment-immutable';
+import moment from 'moment';
 import configureMockStore from "redux-mock-store";
 
 const mockStore = configureMockStore();

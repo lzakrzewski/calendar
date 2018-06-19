@@ -1,6 +1,6 @@
 import React from "react";
 import {shallow} from "enzyme";
-import moment from "moment-immutable";
+import moment from "moment";
 import AllDayEvents from "../../src/components/AllDayEvents";
 
 test('can render empty div when no all days events ', () => {

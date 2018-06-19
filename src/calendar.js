@@ -1,5 +1,4 @@
-import moment from 'moment-immutable';
-import moment3 from 'moment';
+import moment from 'moment';
 import _ from 'lodash';
 
 export const MONDAY = 'Monday';
@@ -23,7 +22,7 @@ export const getTodaysMonth = () => {
 export const getDaysDiffInWeek = (from, to) => {
     const fromDay = moment(from).startOf('day');
     const toDay = moment(to).startOf('day');
-    const endOfCurrentWeek = fromDay.startOf('isoweek').day(7);
+    const endOfCurrentWeek = moment(fromDay).startOf('isoweek').day(7);
 
     if (toDay.isAfter(endOfCurrentWeek)) {
         return endOfCurrentWeek.diff(fromDay, 'days') + 1;
@@ -38,7 +37,7 @@ const getDaysOfMonth = (date) => {
     return _.times(
         currentMonth.daysInMonth(),
         (dayInMonth) => {
-            const day = currentMonth.add(dayInMonth, 'day');
+            const day = moment(currentMonth).add(dayInMonth, 'day');
 
             return {
                 'dayName': day.format('dddd'),
@@ -51,5 +50,5 @@ const getDaysOfMonth = (date) => {
 };
 
 const weekOfMonth = (date) => {
-    return date.isoWeek() - date.startOf('month').isoWeek();
+    return moment(date).isoWeek() - moment(date).startOf('month').isoWeek();
 };

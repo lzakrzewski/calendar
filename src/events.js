@@ -1,4 +1,4 @@
-import moment from 'moment-immutable';
+import moment from 'moment';
 import _ from 'lodash';
 
 export const dayEvents = (date, events) => {

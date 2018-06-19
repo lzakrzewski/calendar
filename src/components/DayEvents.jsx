@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import * as events from "../events";
 import _ from "lodash";
-import moment from "moment-immutable";
+import moment from "moment";
 import "./Day.css";
 
 export default class DayEvents extends Component {

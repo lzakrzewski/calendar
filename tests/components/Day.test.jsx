@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import Day from "../../src/components/Day";
-import moment from 'moment-immutable';
+import moment from 'moment';
 
 test('can render empty cell when given day in month table doesn\'t exist', () => {
     const day = shallow(<Day day={null} events={[]} />);

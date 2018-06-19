@@ -6,7 +6,7 @@ import {
 } from './../calendar';
 import _ from 'lodash';
 import Day from "./Day";
-import moment from 'moment-immutable';
+import moment from 'moment';
 
 export default class Week extends Component {
     getTdClassName = (dayName, day) => {

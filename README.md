@@ -4,7 +4,8 @@ React JS + NodeJS calendar simple app
 
 Todo: 
  - [ ] Eslint
- - [ ] Indicate today
+ - [ x ] Indicate today
+ - [ ] Immutable moment solution
  - [ ] Remove "get" naming approach
  - [ ] Mocked JSONschema API contract
  - [ ] API
