@@ -1,6 +1,6 @@
 import React from "react";
 import {shallow} from "enzyme";
-import AddEvent from "../../src/components/AddEvent";
+import AddEvent from "../../../src/client/components/AddEvent";
 
 let reference;
 

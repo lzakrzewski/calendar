@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import { FETCH_EVENTS } from '../actions';
+import { FETCH_EVENTS } from '../actions/index';
 
 export default function (state = {}, action) {
     switch (action.type) {

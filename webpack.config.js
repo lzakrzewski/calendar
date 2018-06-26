@@ -1,6 +1,6 @@
 module.exports = {
     mode: 'development',
-    entry: ['./src/index.js'],
+    entry: ['./src/client/index.js'],
     output: {
         path: __dirname,
         publicPath: '/',

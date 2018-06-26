@@ -1,4 +1,4 @@
-import { dayEvents, allDayEvents } from './../src/events';
+import { dayEvents, allDayEvents } from '../../src/client/events';
 import moment from 'moment';
 
 describe('dayEvents', () => {

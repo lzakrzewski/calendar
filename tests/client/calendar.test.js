@@ -1,4 +1,4 @@
-import * as calendar from './../src/calendar';
+import * as calendar from '../../src/client/calendar';
 import moment from 'moment';
 
 describe('getTodaysMonth', () => {

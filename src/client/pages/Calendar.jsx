@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import Month from "../components/Month";
 import { getTodaysMonth } from '../calendar';
 import { connect } from 'react-redux';
-import { fetchEvents } from '../actions';
+import { fetchEvents } from '../actions/index';
 import AddEvent from "../components/AddEvent";
 
 class Calendar extends Component {

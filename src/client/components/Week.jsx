@@ -3,7 +3,7 @@ import {
     ALL_WEEK_DAYS,
     SUNDAY,
     getDaysOfWeek
-} from './../calendar';
+} from '../calendar';
 import _ from 'lodash';
 import Day from "./Day";
 import moment from 'moment';
