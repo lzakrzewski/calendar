@@ -31,38 +31,21 @@ export default class AddEvent extends Component {
         this.setState({modalIsOpen: true});
     };
 
-    afterOpenModal = () => {
-    };
-
     closeModal = () => {
         this.setState({modalIsOpen: false});
     };
 
-    handleChange = (value, field, isRaw) => {
-        if (!value) {
-            return null;
-        }
-
-        if (!isRaw) {
-            this.setState({ [field]: event.target.value });
-
-            return;
-        }
-
-        this.setState({ [field]: value })
+    handleChange = (event, field) => {
+        this.setState({[field]: event.target.value});
     };
 
-    handleChange1 = (date) => {
-        this.setState({
-            start: date
-        });
-    }
+    handleTimeChange = (value, field) => {
+        this.setState({[field]: value});
+    };
 
     addEvent = (event) => {
         event.preventDefault();
-
-        console.log(this.state)
-    }
+    };
 
     componentWillMount = () => {
         Modal.setAppElement('body');
@@ -81,7 +64,6 @@ export default class AddEvent extends Component {
             <div>
                 <Modal
                     isOpen={this.state.modalIsOpen}
-                    onAfterOpen={this.afterOpenModal}
                     onRequestClose={this.closeModal}
                     contentLabel="Add event"
                     style={customStyles}
@@ -107,13 +89,14 @@ export default class AddEvent extends Component {
                                     <div className="input-group date" id="startDate" data-target-input="nearest">
                                         <DatePicker
                                             selected={this.state.start}
-                                            onChange={this.handleChange1}
+                                            minDate={moment()}
+                                            maxDate={this.state.end}
+                                            onChange={(startDate) => this.handleTimeChange(startDate, 'start') }
                                             showTimeSelect
-                                            showTimeSelectOnly
+                                            dateFormat="YYYY-MM-DD HH:mm"
+                                            timeFormat="HH:mm"
+                                            className="form-control"
                                             timeIntervals={15}
-                                            dateFormat="LT"
-                                            timeCaption="Time"
-
                                         />
                                     </div>
                                 </div>
@@ -123,11 +106,13 @@ export default class AddEvent extends Component {
                                     <div className="input-group date" id="endDate" data-target-input="nearest">
                                         <DatePicker
                                             selected={this.state.end}
-                                            onChange={(endDate) => this.handleChange(endDate, 'end', true) }
-                                            dateFormat="YYYY-MM-DD"
-                                            showTimeSelect
-                                            className="form-control"
                                             minDate={this.state.start}
+                                            onChange={(endDate) => this.handleTimeChange(endDate, 'end') }
+                                            showTimeSelect
+                                            dateFormat="YYYY-MM-DD HH:mm"
+                                            timeFormat="HH:mm"
+                                            className="form-control"
+                                            timeIntervals={15}
                                         />
                                     </div>
                                 </div>
@@ -141,7 +126,7 @@ export default class AddEvent extends Component {
                                         className="form-control"
                                         id="eventName"
                                         placeholder="Event name"
-                                        onChange={(eventName) => this.handleChange(eventName, 'event', false) }
+                                        onChange={(eventName) => this.handleChange(eventName, 'event') }
                                     />
                                 </div>
                                 <div className="form-group col-md-3 text-center all-day">
@@ -152,7 +137,7 @@ export default class AddEvent extends Component {
                                                 type="checkbox"
                                                 className="custom-control-input"
                                                 id="allDay"
-                                                onChange={(allDay) => this.handleChange(allDay, 'allDay', true) }
+                                                onChange={(allDay) => this.handleChange(allDay, 'allDay') }
                                             />
                                             <label className="custom-control-label" htmlFor="allDay">All day</label>
                                         </div>
