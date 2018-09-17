@@ -1,6 +1,7 @@
 import express from 'express';
 import uuid4 from 'uuid/v4';
 import bodyParser from 'body-parser';
+import { getEventsOfUser } from './application/eventRepository';
 
 const app = express();
 app.use(bodyParser.json());
@@ -11,6 +12,8 @@ app.get('/events', (request, response) => {
     if (userId === 'unknown') {
         return response.status(403).json({error: 'Bad credentials.'});
     }
+
+    getEventsOfUser('user id')
 
     return response.json([
         {
