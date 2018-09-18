@@ -1,67 +1,47 @@
 import request from 'supertest';
 import app from './../../src/server/app';
+import * as eventRepository from '../../src/server/application/eventRepository';
+jest.mock('../../src/server/application/eventRepository');
 
 describe('Get events', () => {
-    it('can get events for given user', () => {
-        return request(app)
-            .get('/events?userId=user123')
-            .set('Accept', 'application/json')
-            .expect(200)
-            .then(response => {
-                expect(response.body.length).toEqual(2)
-            })
+    beforeEach(() => {
+        eventRepository.fetchEvents.mockImplementation(async () => {
+            return [{id: 'event1'}, {id: 'event2'}];
+        });
     });
 
-    it('can not get events for unauthorized user', () => {
-        return request(app)
-            .get('/events?userId=unknown')
-            .set('Accept', 'application/json')
-            .expect(403);
+    it('can get events for given user', async () => {
+        const response = await request(app)
+            .get('/events')
+            .set('Accept', 'application/json');
+
+        expect(response.statusCode).toEqual(200);
+        expect(response.body.length).toEqual(2);
     });
 });
 
 describe('Add events', () => {
-    it('can add event for given user', () => {
-        return request(app)
-            .post('/events?userId=user123')
+    it('can add event for given user', async() => {
+        const response = await request(app)
+            .post('/events')
             .send({
                 start: '2017-01-01',
                 end: '2017-01-02',
                 event: "Quick event 1",
                 allDay: false,
             })
-            .set('Accept', 'application/json')
-            .expect(201)
-            .then(response => {
-                expect(response.body.eventId.length).toEqual(36)
-            })
+            .set('Accept', 'application/json');
+
+        expect(response.statusCode).toEqual(201);
+        expect(response.body.eventId.length).toEqual(36);
     });
 
-    it('can not add events for unauthorized user', () => {
-        return request(app)
-            .post('/events?userId=unknown')
-            .set('Accept', 'application/json')
-            .expect(403);
-    });
-
-    it('can not add event with invalid input', () => {
-        return request(app)
-            .post('/events?userId=user123')
+    it('can not add event with invalid input', async() => {
+        const response = await request(app)
+            .post('/events')
             .send('name=john')
-            .set('Accept', 'application/json')
-            .expect('Content-Type', /json/)
-            .expect(400);
-    });
-});
+            .set('Accept', 'application/json');
 
-describe('User', () => {
-    it('can get userId', () => {
-        return request(app)
-            .post('/users')
-            .set('Accept', 'application/json')
-            .expect(201)
-            .then(response => {
-                expect(response.body.userId.length).toEqual(36)
-            })
+        expect(response.statusCode).toEqual(400);
     });
 });

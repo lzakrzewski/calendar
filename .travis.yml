@@ -1,11 +1,15 @@
 language: node_js
 
 node_js:
-  - "node"
+  - node
+
+services:
+  - docker
 
 install:
   - npm i -g npm@5.8.0
   - npm ci
+  - make build
 
 script:
   - npm run test-ci

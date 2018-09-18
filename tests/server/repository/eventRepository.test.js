@@ -1,44 +1,35 @@
 import * as eventRepository from '../../../src/server/application/eventRepository';
 
 describe('Add events', () => {
-    it('can add and get events from DB', () => {
-        const event1 = {
-            id: 'event-id-1',
-            start: '2017-01-02',
-            end: '2017-01-02',
-            event: "Quick event 1",
-            allDay: false,
-            userId: 'user-id'
-        };
+    beforeEach(async() => {
+        const collection = await eventRepository.getEventsCollection();
 
-        const event2 = {
-            id: 'event-id-2',
-            start: '2017-01-01',
-            end: '2017-01-02',
-            event: "Quick event 2",
-            allDay: false,
-            userId: 'user-id'
-        };
-
-        return eventRepository.connect().then(connection => {
-            return connection.collection('events')
-                .remove();
-            }).then(() => {
-                return eventRepository.add(event1)
-            }).then(() => {
-                return eventRepository.add(event2)
-            })
-            .then(() => {
-            return eventRepository
-                .getEvents('user-id')
-                .then(events => {
-                    expect(event1).toEqual(events[0]);
-                    expect(event2).toEqual(events[1]);
-                });
-        });
+        await collection.remove();
     });
 
-    it('can return empty when no events in DB', () => {
-        expect(2).toEqual(2)
+    it('can return empty when no events in DB', async () => {
+        const events = await eventRepository.fetchEvents('user-id', '2017-01-01');
+
+        expect(events.length).toEqual(0);
+    });
+
+    it('can add and get events of given month from DB', async () => {
+        const in1 = { id: 'in-1', start: '2017-01-02', end: '2017-01-03', userId: 'user-id' };
+        const in2 = { id: 'in-2', start: '2017-01-01', end: '2017-01-04', userId: 'user-id' };
+        const out1 = { id: 'out-1', start: '2017-01-02', end: '2017-01-03', userId: 'another-user' };
+        const out2 = { id: 'out-2', start: '2017-02-01', end: '2017-02-02', userId: 'user-id' };
+        const out3 = { id: 'out-3', start: '2018-01-01', end: '2018-01-02', userId: 'user-id' };
+
+        await eventRepository.add(in1);
+        await eventRepository.add(in2);
+        await eventRepository.add(out1);
+        await eventRepository.add(out2);
+        await eventRepository.add(out3);
+
+        const events = await eventRepository.fetchEvents('user-id', '2017-01-01');
+
+        expect(events.length).toEqual(2);
+        expect(in2).toEqual(events[0]);
+        expect(in1).toEqual(events[1]);
     });
 });
