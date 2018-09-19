@@ -1,7 +1,7 @@
 import request from 'supertest';
-import app from './../../src/server/app';
-import * as eventRepository from '../../src/server/application/eventRepository';
-jest.mock('../../src/server/application/eventRepository');
+import app from '../../../src/server/app';
+import * as eventRepository from '../../../src/server/application/eventRepository';
+jest.mock('../../../src/server/application/eventRepository');
 
 describe('Get events', () => {
     beforeEach(() => {

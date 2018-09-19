@@ -1,4 +1,4 @@
-import * as eventRepository from '../../../src/server/application/eventRepository';
+import * as eventRepository from '../../../../src/server/application/eventRepository';
 
 describe('Add events', () => {
     beforeEach(async() => {
