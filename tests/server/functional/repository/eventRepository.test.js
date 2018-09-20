@@ -32,4 +32,14 @@ describe('Add events', () => {
         expect(in2).toEqual(events[0]);
         expect(in1).toEqual(events[1]);
     });
+
+    it('knows if user has any events', async () => {
+        await eventRepository.add({ id: 'in-1', start: '2017-01-02', end: '2017-01-03', userId: 'user-id' });
+
+        expect(await eventRepository.hasEvents('user-id')).toBe(true);
+    });
+
+    it('knows if user does not have any events', async () => {
+        expect(await eventRepository.hasEvents('user-id')).toBe(false);
+    });
 });

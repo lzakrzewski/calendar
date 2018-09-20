@@ -24,6 +24,17 @@ export const getEventsCollection = async() => {
     return connection.collection("events");
 };
 
+export const hasEvents = async(userId) => {
+    if (!userId) {
+        return false;
+    }
+
+    const collection = await getEventsCollection();
+    const count = await collection.find({ userId }).count();
+
+    return count > 0;
+};
+
 export const fetchEvents = async(userId, month) => {
     let currentMonth = moment()
         .startOf('month')
