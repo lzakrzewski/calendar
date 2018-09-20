@@ -32,8 +32,17 @@ describe('Add events', () => {
             })
             .set('Accept', 'application/json');
 
+        const addedEvent = eventRepository.add.mock.calls[0][0];
+
         expect(response.statusCode).toEqual(201);
         expect(response.body.eventId.length).toEqual(36);
+
+        expect(addedEvent.start).toEqual('2017-01-01');
+        expect(addedEvent.end).toEqual('2017-01-02');
+        expect(addedEvent.event).toEqual('Quick event 1');
+        expect(addedEvent.allDay).toEqual(false);
+        expect(addedEvent.id.length).toEqual(36);
+        expect(addedEvent.userId.length).toEqual(32);
     });
 
     it('can not add event with invalid input', async() => {

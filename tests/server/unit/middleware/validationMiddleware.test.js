@@ -1,4 +1,4 @@
-import {eventValidation} from '../../../../src/server/middleware/validationMiddleware';
+import { eventValidation } from '../../../../src/server/middleware/validationMiddleware';
 
 describe('Validate events', () => {
     let response = null;

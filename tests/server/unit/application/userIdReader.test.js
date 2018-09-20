@@ -9,7 +9,7 @@ describe('Generate user id based on the payload of the request.', () => {
         expect(userId.length).toBe(32);
     });
 
-    it('returns user id different for different "x-forwarded-for" headers', async () => {
+    it('returns different user id for different "x-forwarded-for" headers', async () => {
         const request1 = {
             headers: {
                 "user-agent": 'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.0',
@@ -30,7 +30,7 @@ describe('Generate user id based on the payload of the request.', () => {
         expect(userId1).not.toEqual(userId2);
     });
 
-    it('returns user id different for different "user-agent" headers', async () => {
+    it('returns different user id for different "user-agent" headers', async () => {
         const request1 = {
             headers: {
                 "user-agent": 'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.0',
