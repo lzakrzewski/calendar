@@ -24,7 +24,15 @@ export const getEventsCollection = async() => {
     return connection.collection("events");
 };
 
-export const fetchEvents = async(userId, currentMonth) => {
+export const fetchEvents = async(userId, month) => {
+    let currentMonth = moment()
+        .startOf('month')
+        .startOf('day');
+
+    if (month) {
+        currentMonth = moment(month);
+    }
+
     const collection = await getEventsCollection();
 
     const startOfMonth = moment(currentMonth)
