@@ -8,6 +8,12 @@ describe('Get events', () => {
         eventRepository.fetchEvents.mockImplementation(async () => {
             return [{id: 'event1'}, {id: 'event2'}];
         });
+
+        eventRepository.hasEvents.mockImplementation(async () => {
+            return true;
+        });
+
+        eventRepository.add.mockClear();
     });
 
     it('can get events for given user', async () => {
