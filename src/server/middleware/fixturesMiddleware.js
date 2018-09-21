@@ -49,7 +49,7 @@ const mockedEvents = () => {
             id: uuid4(),
             start: moment(twoDaysAfter).hour(6).minutes(10).toISOString(),
             end: moment(twoDaysAfter).hour(18).minutes(10).toISOString(),
-            event: "Whole day event",
+            event: "Entire day event",
             allDay: true,
         },
         {

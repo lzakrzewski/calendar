@@ -9,7 +9,7 @@ services:
 install:
   - npm i -g npm@5.8.0
   - npm ci
-  - make build
+  - make build-ci
 
 script:
   - npm run test-ci
