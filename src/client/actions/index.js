@@ -15,7 +15,11 @@ export function fetchEvents(currentMonth) {
 
 export function addEvent(event, callback) {
     const request = axios.post(`${ROOT_URL}/events`, event)
-        .then(() => callback());
+        .then(response => {
+            callback();
+
+            return response;
+        });
 
     return {
         type: ADD_EVENT,

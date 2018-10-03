@@ -12,6 +12,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 app.use(loadFixtures);
+app.disable('etag');
 
 app.get('/events', async (request, response) => {
     return response.json(await eventRepository.fetchEvents(userIdFromRequest(request), request.query.month));
@@ -21,7 +22,7 @@ app.post('/events', eventValidation, async (request, response) => {
     const event = { ...request.body, userId: userIdFromRequest(request), id: uuid4()};
     await eventRepository.add(event);
 
-    return response.status(201).json({eventId: event.id});
+    return response.status(201).json(event);
 });
 
 module.exports = app;

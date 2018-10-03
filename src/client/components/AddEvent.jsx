@@ -1,5 +1,7 @@
 import React, {Component} from "react";
 import Modal from "react-modal";
+import { connect } from 'react-redux';
+import { addEvent } from '../actions/index';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import moment from 'moment';
@@ -14,7 +16,7 @@ const customStyles = {
     }
 };
 
-export default class AddEvent extends Component {
+class AddEvent extends Component {
     constructor() {
         super();
 
@@ -45,6 +47,9 @@ export default class AddEvent extends Component {
 
     addEvent = (event) => {
         event.preventDefault();
+        event.stopPropagation();
+
+        this.props.addEvent(this.state, this.closeModal);
     };
 
     componentWillMount = () => {
@@ -68,7 +73,7 @@ export default class AddEvent extends Component {
                     contentLabel="Add event"
                     style={customStyles}
                 >
-                    <form onSubmit={this.addEvent}>
+                    <form onSubmit={(event) => this.addEvent(event)}>
                     <div className="modal-content AddEvent">
                         <div className="modal-header">
                             <h5 className="modal-title">Add event</h5>
@@ -169,3 +174,5 @@ export default class AddEvent extends Component {
         );
     }
 }
+
+export default connect(null, { addEvent })(AddEvent);
