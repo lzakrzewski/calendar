@@ -1,7 +1,11 @@
-import React from "react";
-import {shallow} from "enzyme";
+import React from 'react';
+import { mount } from 'enzyme';
 import AddEvent from "../../../src/client/components/AddEvent";
+import { Provider } from "react-redux";
+import configureMockStore from "redux-mock-store";
 
+const mockStore = configureMockStore();
+const store = mockStore({});
 let reference;
 
 beforeEach(() => {
@@ -9,7 +13,7 @@ beforeEach(() => {
 });
 
 test('can open modal', () => {
-    shallow(<AddEvent onRef={ref => (reference = ref)} />);
+    mount(<Provider store={store}><AddEvent onRef={ref => (reference = ref)} /></Provider>);
 
     reference.openModal();
 
@@ -17,7 +21,7 @@ test('can open modal', () => {
 });
 
 test('can close modal', () => {
-    shallow(<AddEvent onRef={ref => (reference = ref)} />);
+    mount(<Provider store={store}><AddEvent onRef={ref => (reference = ref)} /></Provider>);
 
     reference.openModal();
     reference.closeModal();
