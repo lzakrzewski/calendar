@@ -1,9 +1,9 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import Calendar from "../../../src/client/pages/Calendar";
-import { Provider } from "react-redux";
+import Calendar from '../../../src/client/pages/Calendar';
+import { Provider } from 'react-redux';
 import moment from 'moment';
-import configureMockStore from "redux-mock-store";
+import configureMockStore from 'redux-mock-store';
 
 const mockStore = configureMockStore();
 const store = mockStore({ events: {}});
@@ -25,7 +25,7 @@ test('Calendar can go to next month', () => {
 });
 
 test('Calendar can go to previous month', () => {
-            const calendar = mount(<Provider store={store}><Calendar /></Provider>);
+    const calendar = mount(<Provider store={store}><Calendar /></Provider>);
 
     calendar.find('.prev-month').simulate('click');
 

@@ -14,77 +14,77 @@ const mockedEvents = () => {
             id: uuid4(),
             start: moment(today).hour(10).minutes(10).toISOString(),
             end: moment(today).hour(10).minutes(10).toISOString(),
-            event: "Quick event 1",
+            event: 'Quick event 1',
             allDay: false,
         },
         {
             id: uuid4(),
             start: moment(threeDaysAgo).hour(7).minutes(10).toISOString(),
             end: moment(threeDaysAgo).hour(7).minutes(10).toISOString(),
-            event: "Quick event 2",
+            event: 'Quick event 2',
             allDay: false,
         },
         {
             id: uuid4(),
             start: moment(today).hour(13).minutes(10).toISOString(),
             end: moment(today).hour(14).minutes(10).toISOString(),
-            event: "One hour event",
+            event: 'One hour event',
             allDay: false,
         },
         {
             id: uuid4(),
             start: moment(today).hour(11).minutes(10).toISOString(),
             end: moment(today).hour(12).minutes(30).toISOString(),
-            event: "One hour and half",
+            event: 'One hour and half',
             allDay: false,
         },
         {
             id: uuid4(),
             start: moment(twoDaysAfter).hour(15).minutes(10).toISOString(),
             end: moment(twoDaysAfter).hour(18).minutes(10).toISOString(),
-            event: "Three hours event",
+            event: 'Three hours event',
             allDay: false,
         },
         {
             id: uuid4(),
             start: moment(twoDaysAfter).hour(6).minutes(10).toISOString(),
             end: moment(twoDaysAfter).hour(18).minutes(10).toISOString(),
-            event: "Entire day event",
+            event: 'Entire day event',
             allDay: true,
         },
         {
             id: uuid4(),
             start: moment(tomorrow).hour(6).minutes(10).toISOString(),
             end: moment(tomorrow).hour(12).minutes(10).toISOString(),
-            event: "6 hours event",
+            event: '6 hours event',
             allDay: false,
         },
         {
             id: uuid4(),
             start: moment(threeDaysAgo).hour(6).minutes(10).toISOString(),
             end: moment(twoDaysAfter).hour(18).minutes(10).toISOString(),
-            event: "Multiple days event",
+            event: 'Multiple days event',
             allDay: true,
         },
         {
             id: uuid4(),
             start: moment(today).startOf('month').add(2, 'day').hour(6).minutes(10).toISOString(),
             end: moment(today).startOf('month').add(12, 'day').hour(16).minutes(10).toISOString(),
-            event: "More than one week event",
+            event: 'More than one week event',
             allDay: true,
         },
         {
             id: uuid4(),
             start: moment(today).startOf('month').add(10, 'day').hour(6).minutes(10).toISOString(),
             end: moment(today).startOf('month').add(12, 'day').hour(16).minutes(10).toISOString(),
-            event: "3 days event",
+            event: '3 days event',
             allDay: true,
         },
         {
             id: uuid4(),
             start: moment(today).startOf('month').add(12, 'day').hour(1).minutes(10).toISOString(),
             end: moment(today).startOf('month').add(12, 'day').hour(1).minutes(10).toISOString(),
-            event: "Day event",
+            event: 'Day event',
             allDay: true,
         }
     ];
@@ -104,7 +104,7 @@ export const loadFixtures = async(request, response, next) => {
     const hasEvents = await eventRepository.hasEvents(userId);
 
     if (!hasEvents) {
-        await addFixtureEvents(userId)
+        await addFixtureEvents(userId);
     }
 
     next();

@@ -2,7 +2,7 @@ import express from 'express';
 import uuid4 from 'uuid/v4';
 import bodyParser from 'body-parser';
 import cors from 'cors';
-import * as eventRepository from "./application/eventRepository";
+import * as eventRepository from './application/eventRepository';
 import { eventValidation } from './middleware/validationMiddleware';
 import { loadFixtures } from './middleware/fixturesMiddleware';
 import { userIdFromRequest } from './application/userIdReader';

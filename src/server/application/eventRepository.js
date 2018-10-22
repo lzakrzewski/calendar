@@ -12,16 +12,17 @@ const connect = async () => {
         return connection;
     }
 
-    const db = await mongoClient.connect(url);
+    const db = await mongoClient.connect(url, { useNewUrlParser: true });
 
     connection = db.db('calendar');
+
     return connection;
 };
 
 export const getEventsCollection = async() => {
     const connection = await connect();
 
-    return connection.collection("events");
+    return connection.collection('events');
 };
 
 export const hasEvents = async(userId) => {
@@ -65,7 +66,7 @@ export const fetchEvents = async(userId, month) => {
         .then(results => {
             return results.map(event => {
                 return _.omit(event, ['_id']);
-            })
+            });
         });
 };
 

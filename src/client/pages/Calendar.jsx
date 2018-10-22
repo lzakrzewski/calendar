@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
-import MonthlyEvents from "react-monthly-events";
+import MonthlyEvents from 'react-monthly-events';
 import moment from 'moment';
 import { connect } from 'react-redux';
 import { fetchEvents } from '../actions/index';
-import AddEvent from "../components/AddEvent";
+import AddEvent from '../components/AddEvent';
 
 class Calendar extends Component {
     constructor(props) {

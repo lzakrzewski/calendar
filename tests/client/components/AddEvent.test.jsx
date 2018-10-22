@@ -1,8 +1,8 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import AddEvent from "../../../src/client/components/AddEvent";
-import { Provider } from "react-redux";
-import configureMockStore from "redux-mock-store";
+import AddEvent from '../../../src/client/components/AddEvent';
+import { Provider } from 'react-redux';
+import configureMockStore from 'redux-mock-store';
 
 const mockStore = configureMockStore();
 const store = mockStore({});
@@ -17,7 +17,7 @@ test('can open modal', () => {
 
     reference.openModal();
 
-    expect(reference.state.modalIsOpen).toBe(true)
+    expect(reference.state.modalIsOpen).toBe(true);
 });
 
 test('can close modal', () => {
@@ -26,5 +26,5 @@ test('can close modal', () => {
     reference.openModal();
     reference.closeModal();
 
-    expect(reference.state.modalIsOpen).toBe(false)
+    expect(reference.state.modalIsOpen).toBe(false);
 });

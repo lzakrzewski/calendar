@@ -3,9 +3,6 @@
 React JS + NodeJS calendar simple app
 
 Todo: 
- - [ ] Eslint
- - [ x ] Indicate today
- - [ ] Immutable moment solution
- - [ ] Remove "get" naming approach
- - [ ] Mocked JSONschema API contract
- - [ ] API
+ - [ x ] Eslint
+ - [  ] Demo + deploy
+ - [  ] Fix issues with RWD
