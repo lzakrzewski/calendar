@@ -12,4 +12,5 @@ install:
   - make build-ci
 
 script:
+  - npm run lint-ci
   - npm run test-ci
