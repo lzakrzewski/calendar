@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import MonthlyEvents from "react-monthly-events";
-import { getTodaysMonth } from '../calendar';
+import moment from 'moment';
 import { connect } from 'react-redux';
 import { fetchEvents } from '../actions/index';
 import AddEvent from "../components/AddEvent";
@@ -9,7 +9,7 @@ class Calendar extends Component {
     constructor(props) {
         super(props);
 
-        this.state = { currentMonth: getTodaysMonth() };
+        this.state = { currentMonth: moment() };
     }
 
     componentDidMount = () => {
@@ -21,7 +21,7 @@ class Calendar extends Component {
     };
 
     handleToday = () => {
-        this.setState({ currentMonth: getTodaysMonth() }, this.fetchEvents);
+        this.setState({ currentMonth: moment() }, this.fetchEvents);
     };
 
     handleNext = () => {
@@ -91,7 +91,10 @@ class Calendar extends Component {
                         </nav>
                     </div>
                 </div>
-                <MonthlyEvents currentMonth={ this.state.currentMonth } events={ this.props.events } />
+                <MonthlyEvents
+                    currentMonth={ this.state.currentMonth }
+                    events={ this.props.events }
+                />
                 <AddEvent onRef={ref => (this.child = ref)} />
             </div>
         );
