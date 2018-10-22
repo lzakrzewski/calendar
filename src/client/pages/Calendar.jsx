@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Month from "../components/Month";
+import MonthlyEvents from "react-monthly-events";
 import { getTodaysMonth } from '../calendar';
 import { connect } from 'react-redux';
 import { fetchEvents } from '../actions/index';
@@ -91,7 +91,7 @@ class Calendar extends Component {
                         </nav>
                     </div>
                 </div>
-                <Month currentMonth={ this.state.currentMonth } events={ this.props.events } />
+                <MonthlyEvents currentMonth={ this.state.currentMonth } events={ this.props.events } />
                 <AddEvent onRef={ref => (this.child = ref)} />
             </div>
         );
