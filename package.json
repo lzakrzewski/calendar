@@ -12,6 +12,8 @@
   "scripts": {
     "start-client": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --port 9002",
     "start-server": "nodemon ./src/server/index.js localhost 9001",
+    "start": "concurrently --kill-others-on-fail \"npm run start-client\" \"npm run start-server\"",
+    "build": "webpack --mode production",
     "lint-fix": "eslint -c .eslintrc.js --fix --quiet --ext .jsx --ext .js src/ tests/",
     "lint-ci": "eslint -c .eslintrc.js --ext .jsx --ext .js src/ tests/",
     "test": "jest --watch",
@@ -48,6 +50,7 @@
     "babel-preset-stage-1": "^6.1.18",
     "chai": "^3.5.0",
     "chai-jquery": "^2.0.0",
+    "concurrently": "^4.0.1",
     "css-loader": "^0.28.11",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
