@@ -1,3 +1,7 @@
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+const isProduction = process.env['NODE_ENV'] === 'production';
+
 module.exports = {
     mode: 'development',
     entry: ['./src/client/index.js'],
@@ -31,5 +35,8 @@ module.exports = {
             aggregateTimeout: 300,
             poll: 1000
         }
-    }
+    },
+    plugins: [
+        isProduction && new HtmlWebpackPlugin()
+    ].filter(item => item)
 };
