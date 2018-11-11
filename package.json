@@ -12,7 +12,7 @@
   "scripts": {
     "start-client": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --port 9002",
     "start-server": "nodemon ./src/server/index.js localhost 9001",
-    "start": "concurrently --kill-others-on-fail \"npm run start-client\" \"npm run start-server\"",
+    "start-dev": "concurrently --kill-others-on-fail \"npm run start-client\" \"npm run start-server\"",
     "build": "webpack --mode production",
     "lint-fix": "eslint -c .eslintrc.js --fix --quiet --ext .jsx --ext .js src/ tests/",
     "lint-ci": "eslint -c .eslintrc.js --ext .jsx --ext .js src/ tests/",
@@ -66,7 +66,7 @@
     "supertest": "^3.1.0",
     "webpack": "^4.12.0",
     "webpack-cli": "^3.0.8",
-    "webpack-dev-server": "^3.1.4"
+    "webpack-dev-server": "^3.1.10"
   },
   "dependencies": {
     "axios": "^0.18.0",
