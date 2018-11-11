@@ -3,6 +3,6 @@ require('babel-register')({
 });
 
 const app = require('./app.js');
-app.listen(9001);
+app.listen(process.env.PORT || 9001);
 
 module.exports = app;
