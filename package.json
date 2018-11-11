@@ -14,7 +14,7 @@
     "start-server": "nodemon ./src/server/index.js localhost 9001",
     "start-dev": "concurrently --kill-others-on-fail \"npm run start-client\" \"npm run start-server\"",
     "start": "webpack --mode production",
-    "build": "webpack --mode production",
+    "build": "NODE_ENV=production webpack --mode production",
     "lint-fix": "eslint -c .eslintrc.js --fix --quiet --ext .jsx --ext .js src/ tests/",
     "lint-ci": "eslint -c .eslintrc.js --ext .jsx --ext .js src/ tests/",
     "test": "jest --watch",
@@ -59,7 +59,6 @@
     "redux-mock-store": "^1.5.1",
     "style-loader": "^0.21.0",
     "supertest": "^3.1.0",
-    "webpack": "^4.12.0",
     "webpack-cli": "^3.0.8",
     "webpack-dev-server": "^3.1.10"
   },
@@ -95,6 +94,7 @@
     "react-router-dom": "^4.2.2",
     "redux": "4.0.0",
     "redux-promise": "^0.5.3",
-    "uuid": "^3.3.2"
+    "uuid": "^3.3.2",
+    "webpack": "^4.25.1"
   }
 }
