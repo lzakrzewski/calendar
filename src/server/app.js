@@ -1,4 +1,5 @@
 import express from 'express';
+import path from 'path';
 import uuid4 from 'uuid/v4';
 import bodyParser from 'body-parser';
 import cors from 'cors';
@@ -13,6 +14,14 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use(loadFixtures);
 app.disable('etag');
+
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname + '/../../index.html'));
+});
+
+app.get('/bundle.js', (req, res) => {
+    res.sendFile(path.join(__dirname + '/../../bundle.js'));
+});
 
 app.get('/events', async (request, response) => {
     return response.json(await eventRepository.fetchEvents(userIdFromRequest(request), request.query.month));
