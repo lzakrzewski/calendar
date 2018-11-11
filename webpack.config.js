@@ -1,6 +1,4 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-
-const isProduction = process.env['NODE_ENV'] === 'production';
+const webpack = require('webpack');
 
 module.exports = {
     mode: 'development',
@@ -37,6 +35,11 @@ module.exports = {
         }
     },
     plugins: [
-        isProduction && new HtmlWebpackPlugin()
-    ].filter(item => item)
+        new webpack.DefinePlugin({
+            'process.env': {
+                NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+                BASE_URL: JSON.stringify(process.env.BASE_URL),
+            },
+        }),
+    ],
 };

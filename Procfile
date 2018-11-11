@@ -1,1 +1,1 @@
-web: node ./src/server/index.js
+web: BASE_URL=$BASE_URL npm run build && node ./src/server/index.js

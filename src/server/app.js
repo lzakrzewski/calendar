@@ -20,6 +20,14 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname + '/index.html'));
 });
 
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname + '/../../index.html'));
+});
+
+app.get('/bundle.js', (req, res) => {
+    res.sendFile(path.join(__dirname + '/../../bundle.js'));
+});
+
 app.get('/events', async (request, response) => {
     return response.json(await eventRepository.fetchEvents(userIdFromRequest(request), request.query.month));
 });

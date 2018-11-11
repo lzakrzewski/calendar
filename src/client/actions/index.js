@@ -2,7 +2,7 @@ export const FETCH_EVENTS = 'fetch_events';
 export const ADD_EVENT = 'add_event';
 import axios from 'axios';
 
-const ROOT_URL = 'http://localhost:9001';
+const ROOT_URL = process.env.BASE_URL || 'http://localhost:9001';
 
 export function fetchEvents(currentMonth) {
     const request = axios.get(`${ROOT_URL}/events`, { params: { month: currentMonth.format('YYYY-MM-DD') }});

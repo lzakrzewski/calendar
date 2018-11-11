@@ -2,7 +2,7 @@ import moment from 'moment';
 import mongodb from 'mongodb';
 import _ from 'lodash';
 
-const url = 'mongodb://127.0.0.1:27017/';
+const url = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/calendar';
 const mongoClient = mongodb.MongoClient;
 
 let connection = null;
@@ -14,7 +14,7 @@ const connect = async () => {
 
     const db = await mongoClient.connect(url, { useNewUrlParser: true });
 
-    connection = db.db('calendar');
+    connection = db.db();
 
     return connection;
 };
