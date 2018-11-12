@@ -1,16 +1,17 @@
 language: node_js
-
 node_js:
-  - node
-
+- node
 services:
-  - docker
-
+- docker
 install:
-  - npm i -g npm@5.8.0
-  - npm ci
-  - make build-ci
-
+- npm i -g npm@5.8.0
+- npm ci
+- make build-ci
 script:
-  - npm run lint-ci
-  - npm run test-ci
+- npm run lint-ci
+- npm run test-ci
+deploy:
+  provider: heroku
+  api_key:
+    secure: qEKECmiKNthFv6GkRumAz600O1ZQsgJGyhVGOguzpVCJCH7WZpqVKWbpqoa34A+J5Z5HeIKfhPMYWHl8JbCRAySRLu5tFoiKuN4LDort8/E2cGSdYH92RKfUwbupGE27q9voIfy7zZwTGKHlN8wFOOHbU03xA++W8H6Qnnu4Cx9U3DC3qW30I0MoPGRL1Ila9L03BZY1LeYXJSwOgNETU6BQ1HHWzxnnud/1yUL5k6vKRD42HJVjecZ4MudYBPUDtG582I0rsTRvbAeVja302iU6s8iqQx4mMd3I1mdRY5SCgkJR8vf/K1DM48wKne3mlV6PJSPH6b52JbNw0i9B2OeyKPElznuCdnNDEpwmGJGLj+QMZY0nKOYtwWmmWBG6Q/eCtLhNZPB7Cr///xWsyYuu4Y+6+yx/mA8vJrzpjlszHsmI/V01e3+7Ap15qXoS1Gq3iYl20PE027rPfQY/3TZi5L+ketjUWzkTSBpsmzutgwyawlB7g3joKWCZpGCSmocCCEajR2Vx2rO3TyXxPE9kw6dKcCOC4U1iOlqOBVd55n9jxRrTcVWaf8E1rmunjufME1Nmh/1zTfDJVrh2LkQtQExOR9TxmOfFzlFIRi8h0Jxcgg0B5cQHDMV4MQTSHq2dT6X7RnNm13kBj4uDBJo4vU/jcQ+IITowPjMc8XU=
+  app: react-monthly-events
