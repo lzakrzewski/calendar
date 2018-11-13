@@ -5,7 +5,7 @@ React JS + NodeJS calendar simple app
 Todo: 
  - [x] Eslint
  - [x] Prepare heroku 
- - [ ] Review dependencies
- - [ ] Travis CI heroku deploy
+ - [x] Review dependencies
+ - [x] Travis CI heroku deploy
  - [ ] Fix issues with RWD
  - [ ] Readme
