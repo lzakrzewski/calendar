@@ -1,8 +1,8 @@
 import moment from 'moment';
 import mongodb from 'mongodb';
 import _ from 'lodash';
+import { MONGODB_URI } from './../../../config/default';
 
-const url = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/calendar';
 const mongoClient = mongodb.MongoClient;
 
 let connection = null;
@@ -12,7 +12,7 @@ const connect = async () => {
         return connection;
     }
 
-    const db = await mongoClient.connect(url, { useNewUrlParser: true });
+    const db = await mongoClient.connect(MONGODB_URI, { useNewUrlParser: true });
 
     connection = db.db();
 
