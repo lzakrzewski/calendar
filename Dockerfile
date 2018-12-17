@@ -1,9 +1,11 @@
 FROM node:8.14.0-slim
 
-COPY . /var/www/react-monthly-events-sandbox
 WORKDIR /var/www/react-monthly-events-sandbox
 
+COPY package*.json ./
 RUN npm install
+
+COPY . .
 
 EXPOSE 9001
 EXPOSE 9002
