@@ -17,7 +17,7 @@
     "build": "NODE_ENV=production webpack --mode production --env.BASE_URL --progress",
     "lint-fix": "eslint -c .eslintrc.js --fix --quiet --ext .jsx --ext .js src/ tests/",
     "lint-ci": "eslint -c .eslintrc.js --ext .jsx --ext .js src/ tests/",
-    "test": "jest --watch",
+    "test": "jest --watchAll",
     "test-ci": "jest --coverage --no-cache"
   },
   "jest": {

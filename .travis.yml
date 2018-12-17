@@ -1,15 +1,12 @@
-language: node_js
-node_js:
-- node
 services:
-- docker
+  - docker
+
 install:
-- npm i -g npm@5.8.0
-- npm ci
-- make build-ci
+  - make build
+
 script:
-- npm run lint-ci
-- npm run test-ci
+  - make test-ci
+
 deploy:
   provider: heroku
   api_key:

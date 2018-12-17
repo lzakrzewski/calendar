@@ -1,24 +1,12 @@
-stop-mongo:
-	docker stop calendar-db || true
+build:
+	docker-compose up -d
 
-start-mongo:
-	docker run -p 27017:27017 --name calendar-db -d --rm mongo:4.1
+lint-fix:
+	docker-compose run web npm run lint-fix
 
-install-dependencies:
-	npm install
+test:
+	docker-compose run web npm run test
 
-install-dependencies-prod:
-	npm install --production
-
-start-dev:
-	npm run start-dev &
-
-start-prod:
-	npm run build
-	npm run start
-
-build: stop-mongo start-mongo install-dependencies start-dev
-
-build-prod: stop-mongo start-mongo install-dependencies-prod  start-prod
-
-build-ci: start-mongo
+test-ci:
+	docker-compose run web npm run lint-ci
+	docker-compose run web npm run test-ci
