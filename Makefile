@@ -1,6 +1,5 @@
 build:
-	docker-compose build
-	docker-compose up -d --remove-orphans
+	docker-compose up -d --build --remove-orphans
 
 lint-fix:
 	docker-compose run --rm web npm run lint-fix

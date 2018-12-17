@@ -17,4 +17,4 @@ Online demo is available!
 - `git clone git@github.com:lzakrzewski/react-monthly-events-sandbox.git`
 - `cd react-monthly-events-sandbox`
 
-- `docker-compose up` (or just `make build`) 
+- `docker-compose up -d --build` (or just `make build`) 
