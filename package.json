@@ -49,6 +49,7 @@
     "enzyme-adapter-react-16": "^1.1.1",
     "eslint": "^5.7.0",
     "eslint-plugin-react": "^7.11.1",
+    "event-stream": "^3.3.4",
     "jest": "^22.4.3",
     "jsdom": "^8.1.0",
     "mocha": "^5.2.0",
