@@ -21,6 +21,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/bundle.js', (req, res) => {
+    console.log('putas')
     res.sendFile(path.join(__dirname + '/../../bundle.js'));
 });
 

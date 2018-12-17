@@ -32,7 +32,12 @@ module.exports = {
         watchOptions: {
             aggregateTimeout: 300,
             poll: 1000
-        }
+        },
+        host: '0.0.0.0',
+        port: 9002
+    },
+    watchOptions: {
+        poll: true
     },
     plugins: [
         new webpack.DefinePlugin({

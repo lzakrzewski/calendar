@@ -10,9 +10,9 @@
     "url": "git@github.com:lzakrzewski/calendar.git"
   },
   "scripts": {
-    "start-client": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --port 9002",
-    "start-server": "nodemon ./src/server/index.js localhost 9001",
-    "start-dev": "concurrently --kill-others-on-fail \"npm run start-client\" \"npm run start-server\"",
+    "start-client": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --host 0.0.0.0 --hot --inline --port 9002",
+    "start-server": "nodemon ./src/server/index.js 0.0.0.0 9001",
+    "start-dev": "npm run start-server",
     "start": "node ./src/server/index.js",
     "build": "NODE_ENV=production webpack --mode production --env.BASE_URL --progress",
     "lint-fix": "eslint -c .eslintrc.js --fix --quiet --ext .jsx --ext .js src/ tests/",
