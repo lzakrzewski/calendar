@@ -10,7 +10,7 @@
     "url": "git@github.com:lzakrzewski/calendar.git"
   },
   "scripts": {
-    "start-client": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --port 9002",
+    "start-client": "webpack --mode development --watch",
     "start-server": "nodemon ./src/server/index.js localhost 9001",
     "start-dev": "concurrently --kill-others-on-fail \"npm run start-client\" \"npm run start-server\"",
     "start": "node ./src/server/index.js",
@@ -22,6 +22,7 @@
   },
   "jest": {
     "verbose": true,
+    "testURL": "http://localhost/",
     "transform": {
       "^.+\\.jsx$": "babel-jest",
       "^.+\\.js$": "babel-jest"
@@ -55,8 +56,7 @@
     "mocha": "^5.2.0",
     "nodemon": "^1.18.4",
     "redux-mock-store": "^1.5.1",
-    "supertest": "^3.1.0",
-    "webpack-dev-server": "^3.1.10"
+    "supertest": "^3.1.0"
   },
   "dependencies": {
     "axios": "^0.18.0",

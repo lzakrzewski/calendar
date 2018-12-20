@@ -1,5 +1,6 @@
 import browser from 'browser-detect';
 import md5 from 'md5';
+import moment from 'moment';
 
 const retrieveIp = (request) => {
     if (!request) {
@@ -75,6 +76,8 @@ export const userIdFromRequest = (request) => {
     if (userAgentDataString) {
         message = message + userAgentDataString;
     }
-    
+
+    message = message + moment().format('YYYY/M/D');
+
     return md5(message);
 };
